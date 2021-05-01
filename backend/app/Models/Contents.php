@@ -12,16 +12,7 @@ class Contents extends ModelBase
      * @var array
      */
     protected $fillable = [
-        'user_id',
         'name',
         'status',
     ];
-
-    /**
-     * 
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\Model\User', 'user_id');
-    }
 }
