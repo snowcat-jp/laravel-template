@@ -11,11 +11,15 @@
     },
     "devDependencies": {
         "axios": "^0.21",
+        "deepmerge": "^4.2.2",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.1.14",
+        "sass": "^1.32.12",
+        "sass-loader": "^11.0.1"
     },
     "dependencies": {
-        "vue-router": "^3.5.1"
+        "vue-router": "^3.5.1",
+        "vuetify": "^2.4.11"
     }
 }
