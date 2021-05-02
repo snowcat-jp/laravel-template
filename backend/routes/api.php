@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ContentController;
 use App\Http\Controllers\Api\UserController;
 
@@ -33,6 +34,7 @@ Route::prefix('users')->group(function(){
     Route::get('',  [UserController::class, 'index']);
     Route::post('',  [UserController::class, 'store']);
     Route::get('{id}',  [UserController::class, 'show'])->where('id', '[0-9]+');
-    Route::put('{id}',  [UserController::class, 'update'])->where('id', '[0-9]+');;
-    Route::delete('{id}',  [UserController::class, 'destroy'])->where('id', '[0-9]+');;
+    Route::put('{id}',  [UserController::class, 'update'])->where('id', '[0-9]+');
+    Route::delete('{id}',  [UserController::class, 'destroy'])->where('id', '[0-9]+');
 });
+Route::post('login',  [AuthController::class, 'login']);
