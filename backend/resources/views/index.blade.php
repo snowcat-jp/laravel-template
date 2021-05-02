@@ -3,7 +3,7 @@
  
 <head>
     <meta charset="UTF-8">
-    <title>SPAサンプル</title>
+    <title>サンプル</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
