@@ -66,39 +66,39 @@ class Handler extends ExceptionHandler
         ];
         switch ($statusCode) {
             case 401:
-                $responses['message'] = 'Unauthorized';
-                $responses['user_message'] = '認証できませんでした。ログインしてください。';
-                // $responses['user_message'] = __('exception.E401');
+                $responses['errorType'] = 'Unauthorized';
+                $responses['message'] = '認証できませんでした。ログインしてください。';
+                // $responses['message'] = __('exception.E401');
                 break;
             case 403:
-                $responses['message'] = 'Forbidden';
-                $responses['user_message'] = '指定されたリクエストは許可されていません。';
-                // $responses['user_message'] = __('exception.E403');
+                $responses['errorType'] = 'Forbidden';
+                $responses['message'] = '指定されたリクエストは許可されていません。';
+                // $responses['message'] = __('exception.E403');
                 break;
             case 404:
-                $responses['message'] = 'Not Found';
-                $responses['user_message'] = '対象のデータは見つかりませんでした。';
-                // $responses['user_message'] = __('exception.E404');
+                $responses['errorType'] = 'Not Found';
+                $responses['message'] = '対象のデータは見つかりませんでした。';
+                // $responses['message'] = __('exception.E404');
                 break;
             case 405:
-                $responses['message'] = 'Method Not Allowed';
-                $responses['user_message'] = '指定されたHTTPメソッドは対応していません。';
-                // $responses['user_message'] = __('exception.E405');
+                $responses['errorType'] = 'Method Not Allowed';
+                $responses['message'] = '指定されたHTTPメソッドは対応していません。';
+                // $responses['message'] = __('exception.E405');
                 break;
             case 500:
-                $responses['message'] = 'Internal Server Error';
-                $responses['user_message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
-                // $responses['user_message'] = __('exception.E500');
+                $responses['errorType'] = 'Internal Server Error';
+                $responses['message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
+                // $responses['message'] = __('exception.E500');
                 break;
             case 503:
-                $responses['message'] = 'Service Temporarily Unavailable';
-                $responses['user_message'] = 'アクセスが集中しているためエラーが発生しました。';
-                // $responses['user_message'] = __('exception.E503');
+                $responses['errorType'] = 'Service Temporarily Unavailable';
+                $responses['message'] = 'アクセスが集中しているためエラーが発生しました。';
+                // $responses['message'] = __('exception.E503');
                 break;
             default:
-                $responses['message'] = 'Internal Server Error';
-                $responses['user_message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
-                // $responses['user_message'] = __('exception.default');
+                $responses['errorType'] = 'Internal Server Error';
+                $responses['message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
+                // $responses['message'] = __('exception.default');
                 break;
         }
         return response()->json(['error' => $responses], $statusCode);
