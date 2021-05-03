@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
  
 Vue.use(VueRouter);
  
-import top from "../components/top.vue";
-import login from "../components/login.vue";
-import about from "../components/about.vue";
+import About from "../components/pages/common/About.vue";
+import Top from "../components/pages/top/Top.vue";
+import Login from "../components/pages/user/Login.vue";
  
 const router = new VueRouter({
     mode: "history",
@@ -13,19 +13,19 @@ const router = new VueRouter({
         {
             path: "/",
             name: "top",
-            component: top,
+            component: Top,
             meta: { guestOnly: true }
         },
         {
             path: "/login",
             name: "login",
-            component: login,
+            component: Login,
             meta: { guestOnly: true }
         },
         {
             path: "/about",
             name: "about",
-            component: about,
+            component: About,
             meta: { authOnly: true }
         }
     ]
