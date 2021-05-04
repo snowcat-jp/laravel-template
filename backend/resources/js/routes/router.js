@@ -6,6 +6,8 @@ Vue.use(VueRouter);
 import About from "../components/pages/common/About.vue";
 import Top from "../components/pages/top/Top.vue";
 import Login from "../components/pages/user/Login.vue";
+import Register from "../components/pages/user/Register.vue";
+import Mypage from "../components/pages/user/Mypage.vue";
  
 const router = new VueRouter({
     mode: "history",
@@ -13,8 +15,7 @@ const router = new VueRouter({
         {
             path: "/",
             name: "top",
-            component: Top,
-            meta: { guestOnly: true }
+            component: Top
         },
         {
             path: "/login",
@@ -23,14 +24,25 @@ const router = new VueRouter({
             meta: { guestOnly: true }
         },
         {
+            path: "/register",
+            name: "register",
+            component: Register,
+            meta: { guestOnly: true }
+        },
+        {
+            path: "/mypage",
+            name: "mypage",
+            component: Mypage,
+            meta: { authOnly: true }
+        },
+        {
             path: "/about",
             name: "about",
-            component: About,
-            meta: { authOnly: true }
+            component: About
         }
     ]
 });
- 
+
 function isLoggedIn() {
     return localStorage.getItem("auth");
 }

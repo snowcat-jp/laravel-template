@@ -5,7 +5,6 @@ namespace App\Usecases\Users;
 use App\Services\UserService;
 use App\Http\Requests\UserRegisterRequest;
 use App\Repositories\UserRepository;
-use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 

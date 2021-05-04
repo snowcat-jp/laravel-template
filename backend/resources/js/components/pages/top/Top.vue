@@ -18,18 +18,6 @@
             return {
                 userData:[]
             }
-        },
-        methods: {
-            getInfo: function(){
-                const data = {}
-                axios.get('/api/users', data)
-                .then(
-                    res => {
-                        this.userData = res.data
-                        console.log(this.userData)
-                    }
-                )
-            }
         }
     }
 </script>
