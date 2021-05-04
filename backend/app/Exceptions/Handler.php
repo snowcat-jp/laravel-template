@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -52,7 +54,38 @@ class Handler extends ExceptionHandler
     {
         $exception = $this->prepareException($throwable);
 
+        if ($exception instanceof AuthenticationException) {
+            return $this->authenticationError();
+        } elseif ($exception instanceof ValidationException) {
+            return $this->validationError($request, $exception);
+        }
+
         return $this->customApiResponse($exception);
+    }
+
+    private function authenticationError()
+    {
+        $responses = [
+            'code' => 403,
+            'errorType' => 'Unauthorized',
+            'message' => '認証が必要です。'
+        ];
+        return response()->json(['error' => $responses], 403);
+    }
+
+    private function validationError($request, ValidationException $exception)
+    {
+        $messages = [];
+        foreach ($exception->errors() as $errors) {
+            $messages = array_merge($messages, $errors);
+        }
+
+        $responses = [
+            'code' => 400,
+            'errorType' => 'validationError',
+            'message' => implode('\n', $messages)
+        ];
+        return response()->json(['error' => $responses], 400);
     }
 
     private function customApiResponse($exception)
@@ -87,7 +120,8 @@ class Handler extends ExceptionHandler
                 break;
             case 500:
                 $responses['errorType'] = 'Internal Server Error';
-                $responses['message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
+                $responses['message'] = $exception->getMessage();;
+                // $responses['message'] = 'エラーが発生しました。システムお問い合わせフォームからお問い合わせください。';
                 // $responses['message'] = __('exception.E500');
                 break;
             case 503:
