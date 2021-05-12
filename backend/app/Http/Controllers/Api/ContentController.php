@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ContentRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContentRequest;
 use App\Usecases\Contents\ContentIndexUsecase;
 use App\Usecases\Contents\ContentStoreUsecase;
 use App\Usecases\Contents\ContentShowUsecase;

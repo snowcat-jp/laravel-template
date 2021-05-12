@@ -21,7 +21,7 @@ window.Vue = require('vue').default;
 
 
 
-import router from "./routes/router";
+import router from "./routes/router"
 
 import vuetify from './plugins/vuetify'
 
